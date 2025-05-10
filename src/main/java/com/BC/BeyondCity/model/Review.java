@@ -1,6 +1,5 @@
-package com.BC.BeyondCity.entity;
+package com.BC.BeyondCity.model;
 
-import com.BC.BeyondCity.model.Restaurant;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,6 +1,6 @@
 package com.BC.BeyondCity.security;
 
-import com.BC.BeyondCity.model.Role;
+
 import com.BC.BeyondCity.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

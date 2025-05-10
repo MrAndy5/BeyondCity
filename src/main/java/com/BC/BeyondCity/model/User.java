@@ -1,9 +1,7 @@
-package com.BC.BeyondCity.entity;
+package com.BC.BeyondCity.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
-
-import com.BC.BeyondCity.model.Role;
 
 @Entity
 @Table(name = "users")   // evita colisión con palabra reservada

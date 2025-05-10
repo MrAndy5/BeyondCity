@@ -9,7 +9,6 @@ public class JwtResponse {
 
     public JwtResponse(String token, String username, String role) {
         this.token = token;
-        this.id = id;
         this.username = username;
         this.role = role;
     }
