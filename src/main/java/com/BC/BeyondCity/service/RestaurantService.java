@@ -3,10 +3,9 @@ package com.BC.BeyondCity.service;
 import com.BC.BeyondCity.model.Restaurant;
 import com.BC.BeyondCity.repository.RestaurantRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
@@ -20,21 +19,43 @@ public class RestaurantService {
         return repo.findAll();
     }
 
-    public Restaurant save(Restaurant r) {
+    public Restaurant findById(Long id) {
+        return repo.findById(id)
+                   .orElseThrow(() -> new RuntimeException("Restaurante no encontrado: " + id));
+    }
+
+    public Restaurant create(Restaurant r) {
         return repo.save(r);
     }
 
-    public List<Restaurant> findByFilters(String cuisine, double lat, double lng, double radiusKm) {
-        return repo.findByCuisineAndDistance(cuisine, lat, lng, radiusKm);
+    public Restaurant update(Long id, Restaurant r) {
+        Restaurant existing = findById(id);
+        existing.setName(r.getName());
+        existing.setLatitude(r.getLatitude());
+        existing.setLongitude(r.getLongitude());
+        existing.setCuisine(r.getCuisine());
+        return repo.save(existing);
     }
 
-    @GetMapping("/search")
-    public List<Restaurant> search(
-            @RequestParam(required = false) String cuisine,
-            @RequestParam double lat,
-            @RequestParam double lng,
-            @RequestParam(defaultValue = "5") double radiusKm
-    ) {
-        return this.findByFilters(cuisine, lat, lng, radiusKm);
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
+
+    public List<Restaurant> findByFilters(String cuisine, double lat, double lng, double radiusKm) {
+        return repo.findAll().stream()
+            .filter(r -> (cuisine == null || r.getCuisine().equalsIgnoreCase(cuisine)))
+            .filter(r -> haversineDistance(lat, lng, r.getLatitude(), r.getLongitude()) <= radiusKm)
+            .collect(Collectors.toList());
+    }
+
+    private double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
+        double R = 6371; // km
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2)
+                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                 * Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
     }
 }

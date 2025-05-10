@@ -1,9 +1,9 @@
 package com.BC.BeyondCity.repository;
 
-import com.BC.BeyondCity.entity.Favorite;
+import com.BC.BeyondCity.model.Favorite;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public interface FavoriteRepository extends JpaRepository<Favorite,Long> {
-    List<Favorite> findByUserId(Long userId);
+@Repository
+public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
 }

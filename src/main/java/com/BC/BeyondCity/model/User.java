@@ -3,6 +3,8 @@ package com.BC.BeyondCity.entity;
 import jakarta.persistence.*;
 import java.util.Set;
 
+import com.BC.BeyondCity.model.Role;
+
 @Entity
 @Table(name = "users")   // evita colisión con palabra reservada
 public class User {
@@ -14,6 +16,10 @@ public class User {
 
     @Column(nullable = false)
     private String password;      // en producción, almacena el hash
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
     // Relación con reseñas y favoritos
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -63,6 +69,14 @@ public class User {
     }
     public void setFavorites(Set<Favorite> favorites) {
         this.favorites = favorites;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 }
