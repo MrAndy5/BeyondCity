@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BeyondCity</title>
+    <link rel="stylesheet" href="csIndex.css" />
+    <script src="javaScriptIndex.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>BeyondCity</h1>
+    <p>Explora restaurantes cerca de ti</p>
+</header>
+
+<section id="filters">
+    <select id="cuisineFilter">
+        <option value="">Cocina</option>
+        <option value="italiana">Italiana</option>
+        <option value="japonesa">Japonesa</option>
+        <option value="mexicana">Mexicana</option>
+    </select>
+    <select id="priceFilter">
+        <option value="">Precio</option>
+        <option value="1">€</option>
+        <option value="2">€€</option>
+        <option value="3">€€€</option>
+    </select>
+    <button onclick="applyFilters()">Filtrar</button>
+</section>
+
+<div id="map"></div>
+
+<section id="restaurantList"></section>
+
+<script src="script.js"></script>
+<!-- Sustituye TU_API_KEY por tu clave real -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
+</body>
+</html>
