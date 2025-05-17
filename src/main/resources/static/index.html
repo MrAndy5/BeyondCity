@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>BeyondCity - Inicio</title>
+  <meta charset="UTF-8">
+  <title>BeyondCity – Inicio</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<h1>Bienvenido a BeyondCity</h1>
+  <header>
+    <img src="/images/Logo.png" alt="BeyondCity Logo" class="logo">
+    <h1 class="site-title">BeyondCity</h1>
+  </header>
 
-<h2>Iniciar sesión</h2>
-<form id="loginForm">
-    <input type="text" id="loginUsername" placeholder="Usuario" required />
-    <input type="password" id="loginPassword" placeholder="Contraseña" required />
-    <button type="submit">Entrar</button>
-</form>
+  <div class="container">
+    <h2>Iniciar sesión</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Usuario" required />
+      <input type="password" id="loginPassword" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
 
-<h2>Registrarse</h2>
-<form id="registerForm">
-    <input type="text" id="registerUsername" placeholder="Usuario" required />
-    <input type="password" id="registerPassword" placeholder="Contraseña" required />
-    <label>
+    <h2>Registrarse</h2>
+    <form id="registerForm">
+      <input type="text" id="registerUsername" placeholder="Usuario" required />
+      <input type="password" id="registerPassword" placeholder="Contraseña" required />
+      <label>
         <input type="checkbox" id="isRestaurant" /> ¿Eres restaurante?
-    </label>
-    <button type="submit">Registrarse</button>
-</form>
+      </label>
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
 
-<script src="auth.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>

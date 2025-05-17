@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil de Usuario – BeyondCity</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <img src="/images/Logo.png" alt="BeyondCity Logo" class="logo">
+    <h1 class="site-title">BeyondCity</h1>
+  </header>
+
+  <div class="container">
+    <nav class="profile-nav">
+      <a href="/user-profile.html">Mi Perfil</a>
+      <a href="/my-reviews.html">Mis Reviews</a>
+      <a href="/favorites.html">Favoritos</a>
+    </nav>
+
+    <section class="content">
+      <h2>Datos de Mi Perfil</h2>
+      <form id="profileForm">
+        <label>Nombre de usuario</label>
+        <input type="text" id="username" readonly value="<!-- rellenar via JS -->">
+
+        <label>Correo electrónico</label>
+        <input type="email" id="email" required />
+
+        <label>Contraseña nueva</label>
+        <input type="password" id="newPassword" placeholder="Dejar en blanco para no cambiar" />
+
+        <button type="submit">Guardar cambios</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
